@@ -25,12 +25,26 @@ requirements:
     - typish >=1.5.2
 
 test:
+  source_files:
+    - tests
   imports:
     - nptyping
   commands:
     - pip check
+    - pytest tests
   requires:
     - pip
+    - pytest
+    - autoflake
+    - beartype <0.10.0  # [py<310]
+    - beartype >=0.10.0  # [py>=310]
+    - black
+    - feedparser
+    - isort
+    - mypy
+    - pylint
+    - pyright
+    - typeguard
 
 about:
   home: https://github.com/ramonhagenaars/nptyping
