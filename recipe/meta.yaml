@@ -42,6 +42,7 @@ test:
     - pip
     - pytest
     - pandas
+    - pandas-stubs
     - black
     - feedparser
     - isort
