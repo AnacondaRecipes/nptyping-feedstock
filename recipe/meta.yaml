@@ -39,15 +39,14 @@ test:
     - nptyping
   commands:
     - pip check
-    # ignoring test file with missing packages
-    - pytest --ignore=tests/test_beartype.py --ignore=tests/test_pyright.py -k "not ({{ tests_to_skip }})" tests
+    # ignoring test file with missing packages, also skipping s390x since feedparser not available
+    - pytest --ignore=tests/test_beartype.py --ignore=tests/test_pyright.py -k "not ({{ tests_to_skip }})" tests  # [not s390x]
   requires:
     - pip
     - pytest
     - pandas
-    - pandas-stubs
     - black
-    - feedparser
+    - feedparser    # [not s390x]
     - isort
     - mypy
     - pylint
