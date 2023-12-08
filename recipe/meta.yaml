@@ -28,6 +28,9 @@ requirements:
 {% set tests_to_skip = "test_pandas_stubs_fork_is_synchronized or test_version_bump" %}
 # skip wheel tests since we are relying on conda-build
 {% set tests_to_skip = tests_to_skip + " or test_wheel_is_built_correctly or test_wheel_can_be_installed" %}
+# skip tests where type argument is necessary (only working on py311)
+{% set tests_to_skip = tests_to_skip + " or test_mypy_accepts_dataframe or test_mypy_disapproves_dataframe_with_wrong_function_arguments" %}  # [py<311]
+{% set tests_to_skip = tests_to_skip + " or test_mypy_knows_of_dataframe_methods or test_basic_nptyping_code" %}                              # [py<311]
 
 test:
   source_files:
